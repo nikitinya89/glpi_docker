@@ -36,6 +36,10 @@ mkdir -p docker/glpi
 mv glpi_docker/docker-compose.yml docker/glpi/docker-compose.yml
 mv glpi_docker/mariadb.env docker/glpi/mariadb.env
 ```
+---
+**В файле mariadb.env задать свои пароли**
+
+---
 ### Запуск docker контейнеров
 ```
 docker compose up -d
