@@ -13,7 +13,7 @@ sudo systemctl start openvpn-client@srv
 #### Добавление Репозитория
 ```
 # Add Docker's official GPG key:
-sudo aptt update
+sudo apt update
 sudo apt install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
