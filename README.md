@@ -30,6 +30,10 @@ sudo apt update
 ```
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
+#### Для запуска docker без sudo
+```
+sudo usermod -aG docker $USER
+```
 ### Скопировать docker-compose
 ```
 git clone https://github.com/nikitinya89/glpi_docker
