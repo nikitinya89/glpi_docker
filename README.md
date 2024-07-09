@@ -1,11 +1,48 @@
-# glpi_docker
+### Установка OpenVpn
 ```
 sudo apt update && sudo apt install -y openvpn
 ```
+Затем скопировать конфиг в папку `/etc/openvpn/client/` с расширением *.conf*. Туда же положить файл с паролем, например *srv.pass*
+Добавить в конфиг `askpass '/etc/openvpn/client/srv.pass'`
+### Запустить VPN
 ```
 sudo systemctl start openvpn-client@srv
 ```
+### Установка Docker
+#### Добавление Репозитория
 ```
-mkdir git $$ cd git
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+```
+#### Установка
+```
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+### Скопировать docker-compose
+```
 git clone https://github.com/nikitinya89/glpi_docker
+mkdir -p docker/glpi
+mv glpi_docker/docker-compose.yml docker/glpi/docker-compose.yml
+mv glpi_docker/mariadb.env docker/glpi/mariadb.env
+```
+### Запуск docker контейнеров
+```
+docker compose up -d
+```
+### FusionInventory плагин
+```
+sudo apt install -y bzip2
+tar -xvf glpi_docker/fusioninventory-10.0.6+1.1.tar.bz2
+mv glpi_docker/fusioninventory /var/www/html/glpi/plugins/
 ```
