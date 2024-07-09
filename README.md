@@ -48,6 +48,6 @@ docker compose up -d
 ### FusionInventory плагин
 ```
 sudo apt install -y bzip2
-tar -xvf glpi_docker/fusioninventory-10.0.6+1.1.tar.bz2
+tar -xvf glpi_docker/fusioninventory-10.0.6+1.1.tar.bz2 -C glpi_docker
 mv glpi_docker/fusioninventory /var/www/html/glpi/plugins/
 ```
