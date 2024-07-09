@@ -2,7 +2,7 @@
 ```
 sudo apt update && sudo apt install -y openvpn
 ```
-Затем скопировать конфиг в папку `/etc/openvpn/client/` с расширением *.conf*. Туда же положить файл с паролем, например *srv.pass*
+Затем скопировать конфиг в папку `/etc/openvpn/client/` с расширением *.conf*, например *srv.conf*. Туда же положить файл с паролем, например *srv.pass*
 Добавить в конфиг `askpass '/etc/openvpn/client/srv.pass'`
 ### Запустить VPN
 ```
